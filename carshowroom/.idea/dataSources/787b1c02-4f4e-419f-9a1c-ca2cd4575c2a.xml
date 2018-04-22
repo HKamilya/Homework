@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="carsshowroom@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.7">
+    <root id="1"/>
+    <database id="2" parent="1" name="carsshowroom">
+      <ObjectId>16407</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <database id="3" parent="1" name="postgres">
+      <ObjectId>12373</ObjectId>
+    </database>
+    <database id="4" parent="1" name="contact_db">
+      <ObjectId>16393</ObjectId>
+    </database>
+    <role id="5" parent="1" name="postgres">
+      <ObjectId>10</ObjectId>
+      <SuperRole>1</SuperRole>
+      <Inherit>1</Inherit>
+      <CreateRole>1</CreateRole>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <Replication>1</Replication>
+      <ConnectionLimit>-1</ConnectionLimit>
+      <BypassRls>1</BypassRls>
+    </role>
+    <schema id="6" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <IntrospectionTimestamp>2018-03-16.18:29:56.979</IntrospectionTimestamp>
+      <IntrospectionStateNumber>654</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="7" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+    </schema>
+    <schema id="8" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="9" parent="2" name="pg_temp_1">
+      <ObjectId>11816</ObjectId>
+    </schema>
+    <schema id="10" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11817</ObjectId>
+    </schema>
+    <schema id="11" parent="2" name="information_schema">
+      <ObjectId>12081</ObjectId>
+    </schema>
+    <sequence id="12" parent="6" name="hibernate_sequence">
+      <ObjectId>16448</ObjectId>
+      <StateNumber>654</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <table id="13" parent="6" name="car">
+      <ObjectId>16440</ObjectId>
+      <StateNumber>653</StateNumber>
+    </table>
+    <column id="14" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>653</StateNumber>
+    </column>
+    <column id="15" parent="13" name="color">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>653</StateNumber>
+    </column>
+    <column id="16" parent="13" name="mark">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>653</StateNumber>
+    </column>
+    <column id="17" parent="13" name="model">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>653</StateNumber>
+    </column>
+    <column id="18" parent="13" name="price">
+      <Position>5</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>653</StateNumber>
+    </column>
+    <index id="19" parent="13" name="car_pkey">
+      <ObjectId>16446</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="20" parent="13" name="car_pkey">
+      <ObjectId>16447</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>car_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
