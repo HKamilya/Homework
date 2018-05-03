@@ -1,61 +1,59 @@
 package ru.itacademy.officeproject.service;
 
+import com.github.seratch.jslack.api.model.Attachment;
+import com.github.seratch.jslack.api.model.Group;
+import com.github.seratch.jslack.api.webhook.Payload;
+import com.github.seratch.jslack.api.webhook.WebhookResponse;
 import org.springframework.stereotype.Service;
 
 import ru.itacademy.officeproject.model.User;
+import com.github.seratch.jslack.*;
+import com.github.seratch.jslack.api.methods.request.channels.*;
+import com.github.seratch.jslack.api.methods.response.channels.*;
 
-import javax.validation.Payload;
 import java.io.IOException;
-import java.util.Scanner;
+import java.util.List;
+
 
 @Service
-public static final String WEBHOOK =
-public static final String TOKEN = "xoxb-353846860548-xhVxUkPf8odpbn91vEiBzBgp";
-public class SlackServiceImpl extends SlackLongPollingBot implements SlackService {
+public class SlackServiceImpl implements SlackService {
 
-    new
+//    private static final String TOKEN="xoxb-354071235825-BlnpmCRl4oZGNDnxncpxhXmA";
+    private static final String WEBHOOK="https://hooks.slack.com/services/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";
 
-    Thread(SlackServiceImpl::sendMessage).
 
-    start();
+    @Override
+    public void notifyUser(User user, String message) throws IOException {
+//        String url = System.getenv(WEBHOOK);
 
- try(
-    RTMClient rtm = new Slack().rtm(TOKEN))
+        Payload payload = Payload.builder()
+                .channel("#" + user.getSlackId())
+                .username("OfficeBot")
+                .iconEmoji(":smile_cat:")
+                .text("@" + user.getUsername() + message)
+                .build();
 
-    {
-    }
-    catch(
-    IOException e)
-
-    {
-        e.printStackTrace();
-    }
-
-    private static void sendMessage() {
         Slack slack = Slack.getInstance();
-        Scanner scanner = new Scanner(System.in);
+        WebhookResponse response = slack.send(WEBHOOK, payload);
+        System.out.println(response.getCode());
+    }
 
-        while (!Thread.currentThread().isInterrupted()) {
-            System.out.print("Enter message - ");
-            String message = scanner.nextLine();
-
+    public void notifyGroup(Group group) throws IOException {
+        List<User> users;
+        for(User user : users ){
             Payload payload = Payload.builder()
-                    .channel("#")
-                    .username("")
-                    .iconEmoji("::")
-                    .text(message)
+                    .channel("#" + group.get())
+                    .username("OfficeBot")
+                    .iconEmoji(":smile_cat:")
+                    .text("@" + group.getName() + message)
                     .build();
 
-            try {
-                slack.send(WEBHOOK, payload);
-            } catch (IOException e) {
-                e.printStackTrace();
-                return;
-            }
         }
-
     }
 }
+
+
+
 //   public SlackServiceImpl() {
 //        ApiContextInitializer.init(); // Инициализируем апи
 //        TelegramBotsApi botapi = new TelegramBotsApi();
