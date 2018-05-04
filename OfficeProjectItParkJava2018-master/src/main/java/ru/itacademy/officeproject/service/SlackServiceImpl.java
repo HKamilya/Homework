@@ -18,10 +18,7 @@ import java.util.List;
 @Service
 public class SlackServiceImpl implements SlackService {
 
-//    private static final String TOKEN="xoxb-354071235825-BlnpmCRl4oZGNDnxncpxhXmA";
-    private static final String WEBHOOK="https://hooks.slack.com/services/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";
-
-
+//    
     @Override
     public void notifyUser(User user, String message) throws IOException {
 //        String url = System.getenv(WEBHOOK);
