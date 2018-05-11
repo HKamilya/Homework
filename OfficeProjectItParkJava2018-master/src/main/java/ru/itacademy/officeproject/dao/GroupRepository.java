@@ -6,5 +6,6 @@ import ru.itacademy.officeproject.model.Group;
 
 
 @Repository
-public interface GroupRepository extends CrudRepository<Group, Long> { }
+public interface GroupRepository extends CrudRepository<Group, Long> {
 
+}

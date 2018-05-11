@@ -1,6 +1,7 @@
 package ru.itacademy.officeproject.model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -12,12 +13,31 @@ public class User {
     private String username;
     private String password;
     private String role;
-    private String SlackId;
+    private String slackId;
+
+    public String getSlackId() {
+        return slackId;
+    }
+
+    public void setSlackId(String slackId) {
+        this.slackId = slackId;
+    }
+
+    @ManyToMany
+    private List<Group> groups;
 
     @OneToMany (mappedBy = "user")
     private Set<Achievment> achievments;
 
     public User() {
+    }
+
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
     }
 
     public Long getId() {
@@ -50,14 +70,6 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public String getSlackId() {
-        return SlackId;
-    }
-
-    public void setSlackId(String SlackId) {
-        this.SlackId = SlackId;
     }
 
     public Set<Achievment> getAchievments() {

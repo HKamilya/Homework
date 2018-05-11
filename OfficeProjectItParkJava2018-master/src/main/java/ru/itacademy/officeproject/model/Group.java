@@ -1,23 +1,28 @@
 package ru.itacademy.officeproject.model;
 
 import javax.persistence.*;
-import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "groups")
 public class Group {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String groupSlackId;
+
+    @ManyToMany(mappedBy = "groups")
+    List<User> users;
 
     public Group() {
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
     public Long getId() {
@@ -36,11 +41,4 @@ public class Group {
         this.name = name;
     }
 
-    public String getGroupSlackId() {
-        return groupSlackId;
-    }
-
-    public void setGroupSlackId(String GroupSlackId) {
-        this.name = groupSlackId;
-    }
 }

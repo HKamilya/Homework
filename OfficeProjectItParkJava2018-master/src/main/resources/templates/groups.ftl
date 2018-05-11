@@ -2,32 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-
     <title>Groups</title>
+    <#include "links.ftl">
 </head>
 <body>
-
-<a href="/login"><h1>< Back</h1></a>
+<#include "menu.ftl">
+<div class="container">
 <h1>Group List</h1>
 <table class="table">
     <tr class="thead-dark">
         <th>Id</th>
         <th>Name</th>
+        <th>Users</th>
+        <th></th>
     </tr>
     <#list groups as group>
         <tr>
             <td> ${group.id}</td>
             <td>${group.name}</td>
+            <td>
+                <ul>
+                <#list group.users as user>
+                    <li><a href="/user/${user.id}">${user.username}</a></li>
+                </#list>
+                </ul>
+            </td>
+            <td><form class="form-inline my-2 my-lg-0" action="/user/sendtasktogroup" method="get">
+                <#--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
+                    <input type="hidden" name="groupId" value="${group.id}"/>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Отправить задачу группе</button>
+            </form></td>
         </tr>
     </#list>
-
 </table>
-
+</div>
 </body>
 </html>

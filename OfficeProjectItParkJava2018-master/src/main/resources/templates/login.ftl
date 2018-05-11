@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-      integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-
+<head>
+<#include "links.ftl">
 <style>
     html,
     body {
         height: 100%;
     }
+
     body {
         display: -ms-flexbox;
         display: flex;
@@ -18,6 +18,7 @@
         padding-bottom: 40px;
         background-color: #f5f5f5;
     }
+
     .form-signin {
         width: 100%;
         max-width: 330px;
@@ -49,11 +50,11 @@
     }
 </style>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-<title>Login page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Login page</title>
 </head>
 <body class="text-center">
 
@@ -71,17 +72,12 @@
 
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" name="password" class="form-control" id="inputPassword" placeholder="password" required/>
-
+    <#if model.error.isPresent()>
+        <p>The email or password you have entered is invalid, try again.</p>
+    </#if>
     <button class="btn btn-success  " type="submit">Sign in</button>
     <p class="mt-5 mb-3 text-muted">© 2017-2018 It-Park</p>
+
 </form>
-
-<#if model.error.isPresent()>
-<p>The email or password you have entered is invalid, try again.</p>
-</#if>
-
-
-
-
 </body>
 </html>
